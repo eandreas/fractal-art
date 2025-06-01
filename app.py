@@ -22,7 +22,7 @@ def mandelbrot_set(xmin, xmax, ymin, ymax, width, height, max_iter):
     return div_time.T  # Transpose for correct orientation
 
 # Streamlit interface
-st.title("🌀 Mandelbrot Set Explorer")
+st.title("Mandelbroti-Explorer")
 st.sidebar.header("Parameters")
 
 xmin = st.sidebar.slider("x-min", -2.5, -0.5, -2.0)
@@ -34,13 +34,13 @@ height = st.sidebar.slider("Height", 100, 1000, 500, step=100)
 max_iter = st.sidebar.slider("Max Iterations", 50, 1000, 200, step=50)
 
 # Compute the Mandelbrot set
-st.write("Generating Mandelbrot Set...")
 mandelbrot_img = mandelbrot_set(xmin, xmax, ymin, ymax, width, height, max_iter)
 
 # Plotting
-fig, ax = plt.subplots(figsize=(6, 6))
-ax.imshow(mandelbrot_img, extent=[xmin, xmax, ymin, ymax], cmap="hot")
-ax.axis('off')  # Hide axes
-ax.set_title("Mandelbrot Set")
-st.pyplot(fig)
+#plt.figure(figsize=(10, 10))
+plt.figure()
+plt.imshow(mandelbrot_img, extent=(xmin, xmax, ymin, ymax), cmap='turbo')
+plt.axis('off')
+st.pyplot(plt)
+
 
